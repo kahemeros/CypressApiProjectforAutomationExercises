@@ -21,13 +21,13 @@ describe("Get Method Testing", () => {
       url: `${pathParam}`,
     }).then((response) => {
       const responseBodyJson = JSON.parse(response.body);
-      // 4) do assertions
+      // 4) do the assertions
       // i) Assert that status code is 200
       expect(response.status).to.eq(200);
       // ii) Assert that Response Code is 200
       expect(responseBodyJson.responseCode).to.eq(this.expectedData.responseCode);
-      // iii) Assert that Response JSON: All products list
-      expect(responseBodyJson).to.have.property("products");
+      // iii) Assert that Response JSON is all products list
+      expect(responseBodyJson.products).to.deep.eq(this.expectedData.products);
     });
   });
 });

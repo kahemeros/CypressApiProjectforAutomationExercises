@@ -10,7 +10,7 @@
 */
 
 describe("Post Method Testing", () => {
-  it("should reveal Post method is not working with this URL", function () {
+  it("should verify Post method is not working with this URL", function () {
     // 1) set the endpoint
     const pathParam = "/productsList";
     // 2) set the expected data
@@ -21,7 +21,7 @@ describe("Post Method Testing", () => {
       url: `${pathParam}`,
     }).then((response) => {
       const responseBodyJson = JSON.parse(response.body);
-      // 4) do assertions
+      // 4) do the assertions
       // i) assert that status code is 200
       expect(response.status).to.eq(200);
       // ii) assert that response code is 405
