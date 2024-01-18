@@ -19,24 +19,15 @@ describe("Get Method Testing", () => {
     cy.request({
       method: "GET",
       url: `${pathParam}`,
-    }).then((response)=>{     
+    }).then((response) => {
+      const responseBodyJson = JSON.parse(response.body);
       // do assertions
       // 1) Assert that status code is 200
-        expect(response.status).to.eq(200);
-        // cy.log(JSON.stringify(response.body));
-        console.log(response.body);
-        // 2) Assert that Response Code is 200
-        // expect(response.body.responseCode).to.eq(this.expectedData.responseCode);
-        // cy.log(JSON.stringify(response.body.responseCode));
-        // console.log(this.expectedData.responseCode);
-        // console.log(this.expectedData.products[0]);
-        // console.log(response.body.products);
-        // console.log(response.body.responseCode);
-    
-        //expect(response.body.responseCode).to.eq(this.expectedData.responseCode);
-        // 3) Assert that Response JSON: All products list
-        expect(response.body).to.include("products");
-        
+      expect(response.status).to.eq(200);
+      // 2) Assert that Response Code is 200
+      expect(responseBodyJson.responseCode).to.eq(this.expectedData.responseCode);
+      // 3) Assert that Response JSON: All products list
+      expect(responseBodyJson).to.have.property("products");
     });
   });
 });
